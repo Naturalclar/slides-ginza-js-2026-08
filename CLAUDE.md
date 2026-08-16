@@ -75,3 +75,20 @@ that is optional but consistent.
 Slides are deliberately near-empty — most are a single `<h1>`. Existing content classes
 (`.subtitle`, `.sub`, `.flow`, `.links`, `.link-heading`) cover the current needs; prefer reusing
 one over adding a new rule.
+
+## Deployment
+
+`.github/workflows/deploy.yml` builds on pushes to `main` and publishes `dist/`
+to GitHub Pages. The deck is served at:
+
+**https://naturalclar.dev/slides-ginza-js-2026-08/**
+
+That URL is not configured anywhere in this repo, and the path is not free to
+choose. `Naturalclar/naturalclar.github.io` is the account's *user site* and its
+`CNAME` is `naturalclar.dev`, so GitHub Pages serves every project page under
+the account at `naturalclar.dev/<repo-name>/` — exactly one path segment, always
+equal to the repo name. Renaming this repo changes the URL; nesting it under
+something like `/slides/…` is not possible from a project repo at all.
+
+`vite.config.ts` sets `base: "./"` rather than the literal path, so the build
+stays correct under `pnpm preview` and survives a repo rename.
