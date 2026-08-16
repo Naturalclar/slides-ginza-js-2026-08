@@ -1,0 +1,94 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+A single-deck slide presentation for Ginza.js #11 — a 10-minute Japanese-language talk titled
+「思いついた日にリリースする個人開発」. It is not a slide *framework*; it is one specific talk built as a
+Vite + React 19 SPA. All slide content lives in the repo as JSX, not in Markdown or a CMS.
+
+## Commands
+
+pnpm is the package manager (`pnpm-lock.yaml`).
+
+```
+pnpm install
+pnpm dev       # Vite dev server — the presentation mode you actually present from
+pnpm build     # tsc (typecheck, noEmit) && vite build → dist/
+pnpm preview   # serve the built dist/
+```
+
+There is no test runner, linter, or formatter configured. `pnpm build` is the only check —
+typechecking runs through `tsc` with `strict`, `noUnusedLocals`, and `noUnusedParameters` on,
+so unused variables fail the build.
+
+## Architecture
+
+Three files carry the whole deck:
+
+- `src/sections.tsx` — the **content**. Exports `sections: Section[]`, where each entry is
+  `{ content: ReactNode, note: string }`. Array order *is* slide order; there are no ids or
+  explicit numbering. Adding, removing, or reordering an entry changes the deck.
+- `src/App.tsx` — the **runtime**. Maps `sections` to `<section class="slide">` elements and
+  wires up all navigation behavior. Holds the only state in the app: `activeIndex`, `dark`,
+  `showNotes`.
+- `src/styles.css` — the **presentation layer**. Scroll-snap layout, theme via CSS custom
+  properties, print rules.
+
+### How navigation works
+
+Slides are real scroll positions, not a router. `html { scroll-snap-type: y mandatory }` plus
+`.slide { height: 100svh }` makes each section a snap target; everything else observes that scroll:
+
+- An `IntersectionObserver` (threshold 0.5) sets `activeIndex`, toggles `.visible` on
+  `.slide-inner` for the fade-in, and mirrors the position into the URL hash via
+  `history.replaceState` as a **1-based** index (`#1` is the first slide).
+- Deep-linking reads that hash on mount and scrolls with `behavior: "instant"`; all other
+  navigation uses `behavior: "smooth"`.
+- Keyboard: arrows / Space move by one, Home / End jump to the ends, `d` toggles dark/light,
+  `n` toggles the speaker-notes overlay.
+
+Because the observer owns `activeIndex`, never set it directly — call `scrollTo(index)` and let
+the scroll drive the state. Keep the 1-based hash convention if you touch either the mount
+effect or the observer; they must agree.
+
+### Themes and print
+
+`.dark` / `.light` on the root `.deck` div swap a block of CSS custom properties (`--bg`,
+`--fg`, `--fg-sub`, …). Style new slide elements against those variables rather than literal
+colors, or they will break in one of the two themes. The `@media print` block converts the deck
+into a paginated PDF export (one slide per page, animations forced visible, chrome hidden) —
+check it when adding fixed-position or animated elements.
+
+## Working on slide content
+
+The `note` field is not decoration. It carries the presenter's live script: wall-clock timings
+for a 10-minute slot (`0:30–2:00`), contingency instructions, and an explicit cut order
+(【削る順①】…) marking which slides get dropped if the talk runs long. Preserve that information
+when editing a note; the demo slide and the 「3日後、迷わなくなった」 slide are marked as never-cut.
+
+Content is Japanese. `index.html` sets `lang="ja"` and the font stack in `styles.css` includes
+CJK families — keep both in place. Notes use `–`/`—` escapes for en/em dashes; matching
+that is optional but consistent.
+
+Slides are deliberately near-empty — most are a single `<h1>`. Existing content classes
+(`.subtitle`, `.sub`, `.flow`, `.links`, `.link-heading`) cover the current needs; prefer reusing
+one over adding a new rule.
+
+## Deployment
+
+`.github/workflows/deploy.yml` builds on pushes to `main` and publishes `dist/`
+to GitHub Pages. The deck is served at:
+
+**https://naturalclar.dev/slides-ginza-js-2026-08/**
+
+That URL is not configured anywhere in this repo, and the path is not free to
+choose. `Naturalclar/naturalclar.github.io` is the account's *user site* and its
+`CNAME` is `naturalclar.dev`, so GitHub Pages serves every project page under
+the account at `naturalclar.dev/<repo-name>/` — exactly one path segment, always
+equal to the repo name. Renaming this repo changes the URL; nesting it under
+something like `/slides/…` is not possible from a project repo at all.
+
+`vite.config.ts` sets `base: "./"` rather than the literal path, so the build
+stays correct under `pnpm preview` and survives a repo rename.
