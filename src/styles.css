@@ -124,6 +124,24 @@ code {
     monospace;
 }
 
+/* ─── Title slide ASCII art ─── */
+.ascii {
+  /* .slide-inner centers text, which would center each line of the art
+     independently and shear it. Center the block instead, and keep the
+     lines left-aligned inside it. */
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+
+  font-family: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo,
+    monospace;
+  font-size: clamp(0.75rem, 1.5vw, 1.4rem);
+  line-height: 1.1;
+  color: var(--fg);
+  white-space: pre;
+}
+
 /* ─── Intro slide ─── */
 .avatar {
   display: block;
