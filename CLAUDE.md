@@ -27,18 +27,18 @@ checks, and `.github/workflows/ci.yml` runs both on pull requests and on `main`.
 separate typecheck script because `build` already runs `tsc` — with `strict`, `noUnusedLocals`,
 and `noUnusedParameters` on, so unused variables fail the build.
 
-`.oxlintrc.json` disables three rules, each with the reasoning inline. The notable one is
-`react/no-array-index-key`: `sections` is a module-level constant that is never reordered at
-runtime, and the array index *is* a slide's identity (the URL hash is that index), so the
-remount-on-reorder hazard the rule guards against cannot occur here.
+`.oxlintrc.json` disables two rules, each with the reasoning inline: JSX uses the automatic
+runtime, and `main.tsx` imports `styles.css` for its side effect.
 
 ## Architecture
 
 Three files carry the whole deck:
 
 - `src/sections.tsx` — the **content**. Exports `sections: Section[]`, where each entry is
-  `{ content: ReactNode, note: string }`. Array order *is* slide order; there are no ids or
-  explicit numbering. Adding, removing, or reordering an entry changes the deck.
+  `{ id: string, content: ReactNode, note: string }`. Array order *is* slide order — the `id`
+  is only React's key and plays no part in navigation, so it must be unique but is safe to
+  rename. Adding, removing, or reordering an entry changes the deck; a new entry needs a new
+  `id`, or React will collide keys.
 - `src/App.tsx` — the **runtime**. Maps `sections` to `<section class="slide">` elements and
   wires up all navigation behavior. Holds the only state in the app: `activeIndex`, `dark`,
   `showNotes`.
