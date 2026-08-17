@@ -110,7 +110,7 @@ export function App() {
     >
       {sections.map((section, i) => (
         <section
-          key={i}
+          key={section.id}
           ref={(el) => { sectionRefs.current[i] = el; }}
           className="slide"
         >
@@ -120,9 +120,9 @@ export function App() {
 
       {/* Dot navigation */}
       <nav className="dots" aria-label="Slide navigation">
-        {sections.map((_, i) => (
+        {sections.map((section, i) => (
           <button
-            key={i}
+            key={section.id}
             className={`dot ${i === activeIndex ? "active" : ""}`}
             onClick={() => scrollTo(i)}
             aria-label={`Go to slide ${i + 1}`}

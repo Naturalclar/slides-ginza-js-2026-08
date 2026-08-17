@@ -17,19 +17,28 @@ pnpm install
 pnpm dev       # Vite dev server — the presentation mode you actually present from
 pnpm build     # tsc (typecheck, noEmit) && vite build → dist/
 pnpm preview   # serve the built dist/
+pnpm lint      # oxlint
+pnpm lint:fix  # oxlint --fix
+pnpm ogp       # regenerate public/ogp.png (see below)
 ```
 
-There is no test runner, linter, or formatter configured. `pnpm build` is the only check —
-typechecking runs through `tsc` with `strict`, `noUnusedLocals`, and `noUnusedParameters` on,
-so unused variables fail the build.
+There is no test runner or formatter configured; `pnpm lint` and `pnpm build` are the two
+checks, and `.github/workflows/ci.yml` runs both on pull requests and on `main`. There is no
+separate typecheck script because `build` already runs `tsc` — with `strict`, `noUnusedLocals`,
+and `noUnusedParameters` on, so unused variables fail the build.
+
+`.oxlintrc.json` disables two rules, each with the reasoning inline: JSX uses the automatic
+runtime, and `main.tsx` imports `styles.css` for its side effect.
 
 ## Architecture
 
 Three files carry the whole deck:
 
 - `src/sections.tsx` — the **content**. Exports `sections: Section[]`, where each entry is
-  `{ content: ReactNode, note: string }`. Array order *is* slide order; there are no ids or
-  explicit numbering. Adding, removing, or reordering an entry changes the deck.
+  `{ id: string, content: ReactNode, note: string }`. Array order *is* slide order — the `id`
+  is only React's key and plays no part in navigation, so it must be unique but is safe to
+  rename. Adding, removing, or reordering an entry changes the deck; a new entry needs a new
+  `id`, or React will collide keys.
 - `src/App.tsx` — the **runtime**. Maps `sections` to `<section class="slide">` elements and
   wires up all navigation behavior. Holds the only state in the app: `activeIndex`, `dark`,
   `showNotes`.
