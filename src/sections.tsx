@@ -18,6 +18,17 @@ export const sections: Section[] = [
     id: "title",
     content: (
       <>
+        <pre className="ascii" aria-hidden="true">{`             | |
+          .-"""""-.
+        .'  _____  '.
+       /  .'     '.  \\
+      |  |   .-.   |  |
+      |  |  ( o )  |  |
+      |  |   '-'   |  |
+       \\  '._____.'  /
+        '.         .'
+          '-.....-'
+`}</pre>
         <h1>自分だけのGLaDOSをつくる</h1>
         <p className="sub">
           <code>{'import { Markdown, Git, ClaudeCode } from "./my-repo"'}</code>
