@@ -107,7 +107,7 @@ export const sections: Section[] = [
         <ul className="links rows">
           <li>
             <span>朝</span>
-            <span>prepare-day → new-note → daily-suggestion</span>
+            <span>prepare-day → linear-todo → daily-suggestion</span>
           </li>
           <li>
             <span>日中</span>
@@ -121,7 +121,7 @@ export const sections: Section[] = [
         <p className="sub">ぜんぶで14個。どれもMarkdownの手順書</p>
       </>
     ),
-    note: "2:55–3:15 デモで見せた朝・昼・夜が、そのままスキル名になっている。prepare-dayがブランチを切ってノートを作りPRを開く、diaryが日記を書いて提案を更新してcommitとpushまでやる、close-dayがそのPRをsquash mergeして1日=1コミットにする。コードではなくMarkdownの手順書なので、足すのも直すのも文章を書くだけ。ここは名前を読み上げず「こういう粒度で切ってあります」で流す。20秒",
+    note: "2:55–3:15 デモで見せた朝・昼・夜が、そのままスキル名になっている。prepare-dayがブランチを切ってノートを作りPRを開く（new-noteはこの中で呼ばれるので単独では出さない）、linear-todoがLinearからその日のタスクを読み取り同期する、diaryが日記を書いて提案を更新してcommitとpushまでやる、close-dayがそのPRをsquash mergeして1日=1コミットにする。コードではなくMarkdownの手順書なので、足すのも直すのも文章を書くだけ。linear-todoは次の「判断はLLM」の実例でもあるので、ここで名前だけ置いておくと繋がる。名前を読み上げず「こういう粒度で切ってあります」で流す。20秒",
   },
   {
     id: "anywhere",
