@@ -5,9 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-deck slide presentation for Ginza.js #11 — a 10-minute Japanese-language talk titled
-「1日を1つのリポジトリで回す」, about running a day out of one Markdown + Git + Claude Code repo. It is
-not a slide *framework*; it is one specific talk built as a Vite + React 19 SPA. All slide content
-lives in the repo as JSX, not in Markdown or a CMS.
+「自分だけのGLaDOSをつくる」, about running a day out of one Markdown + Git + Claude Code repo and
+reaching it from anywhere. It is not a slide *framework*; it is one specific talk built as a
+Vite + React 19 SPA. All slide content lives in the repo as JSX, not in Markdown or a CMS.
+
+The title is deliberately playful and the subtitle is load-bearing: it lists the three real
+components so the audience does not arrive expecting a talking assistant. Keep them together
+if you touch either.
 
 The wording on the slides comes from an external script and is authoritative — adjust presentation,
 not copy. The deck must also stay publishable: no employer names, ticket IDs, listener names, or
@@ -80,8 +84,13 @@ check it when adding fixed-position or animated elements.
 The `note` field is not decoration. It carries the presenter's live script: wall-clock timings
 for a 10-minute slot (`0:30–2:00`), contingency instructions, and an explicit cut order
 (【削る順①】…) marking which slides get dropped if the talk runs long. Preserve that information
-when editing a note. The demo slide and the 「失敗した話を3つ」 slide are the talk's spine and are
-marked never-cut; 「この運用から生まれたもの」 is not cut either, but is held to 30 seconds.
+when editing a note.
+
+The running order is planned, not just contingent: 「2週間で…」 is dropped **up front** to pay for
+the longer opening, and the closing loses its back half. What survives no matter what is the demo
+and the four-slide 失敗した話 block — those two are the spine. 「この運用から生まれたもの」 is not
+cut either, but is held to 30 seconds. The times in the notes are a closed schedule that ends at
+10:00, so moving one slide's allocation means finding the seconds somewhere else.
 
 Content is Japanese. `index.html` sets `lang="ja"` and the font stack in `styles.css` includes
 CJK families — keep both in place. Notes use `–`/`—` escapes for en/em dashes; matching
