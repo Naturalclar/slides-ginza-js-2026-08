@@ -133,11 +133,22 @@ code {
   text-align: left;
 }
 
-.rows li {
+/* The grid lives on the list, not on each row: per-row grids size their label
+   column independently, so a 3-character label pushes only its own value out
+   and the column stops lining up. One grid = one shared track. */
+.rows {
   display: grid;
-  grid-template-columns: 3em 1fr;
-  gap: 1.25rem;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.5rem;
   align-items: baseline;
+}
+
+.rows li {
+  display: contents;
+}
+
+.rows li > span:first-child {
+  white-space: nowrap;
 }
 
 /* ─── Title slide ASCII art ─── */
