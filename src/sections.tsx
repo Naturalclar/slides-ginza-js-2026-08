@@ -89,6 +89,16 @@ export const sections: Section[] = [
     note: "デモ直後に1枚で全体像。ノートはただのMarkdown、スキルはただの手順書、保存はただのgit push。特別なアプリは1つもない",
   },
   {
+    id: "anywhere",
+    content: (
+      <>
+        <h1>どこからでも、1日を回す</h1>
+        <p className="sub">iPad + Tailscale + Termius → tmux</p>
+      </>
+    ),
+    note: "経路は2つある。①スマホ: Claudeのモバイルアプリからスキルを叩く。セッションは使い捨てのコンテナなので、スキル側が必ずcommitとpushまでやる——状態をセッションに置かない設計。②腰を据えるとき: iPad miniからTailscale経由でMacにSSH、Termiusで繋いでtmuxにアタッチし、Claude Codeをそのまま動かす。tmux new -A -s main なので切れても同じセッションに戻れる。ルータもファイアウォールも触っていない。20〜25秒。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
+  },
+  {
     id: "llm-and-scripts",
     content: <h1>判断はLLM、書き換えは冪等なスクリプト</h1>,
     note: "2:55–4:55 技術の芯その1。外部データ（チケット管理ツール等）との同期は、LLMが「何をすべきか」を判断し、実際のファイル書き換えは決定的で冪等なスクリプトがやる。LLMに直接ファイルを触らせない——この分担がシステムを壊さないコツ。【削る順②】押されたら詳細を落として結論だけ残す",
