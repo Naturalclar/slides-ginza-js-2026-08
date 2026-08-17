@@ -154,18 +154,18 @@ export const sections: Section[] = [
         <h1>どこからでも、1日を回す</h1>
         <ul className="links rows">
           <li>
-            <span>スマホ</span>
-            <span>Claudeアプリからスキルを叩く</span>
+            <span>iPhone / iPad mini</span>
+            <span>Tailscale経由でSSH、tmuxにアタッチ</span>
           </li>
           <li>
             <span>iPad</span>
-            <span>Tailscale経由でSSH、tmuxにアタッチ</span>
+            <span>Jump Desktopでデスクトップごと</span>
           </li>
         </ul>
         <p className="sub">状態はセッションではなくGitにある</p>
       </>
     ),
-    note: "3:40–4:15 経路は2つある、35秒。①スマホ: Claudeのモバイルアプリからスキルを叩く。セッションは使い捨てのコンテナなので、スキル側が必ずcommitとpushまでやる——状態をセッションに置かない設計。②腰を据えるとき: iPad miniからTailscale経由でMacにSSH（クライアントはTermius）、tmuxにアタッチし、Claude Codeをそのまま動かす。tmux new -A -s main なので切れても同じセッションに戻れる。ルータもファイアウォールも触っていない。20〜25秒。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
+    note: "3:40–4:15 経路は2つある、35秒。①iPhoneとiPad miniからはTailscale経由でMacにSSH（クライアントはTermius）、tmux new -A -s main でアタッチしてClaude Codeをそのまま動かす。切れても同じセッションに戻れる。②iPadからはJump Desktopでデスクトップごとリモート接続する。ルータもファイアウォールも触っていない。補足として、Claudeのモバイルアプリからスキルを叩く軽い経路もあり、そちらはセッションが使い捨てコンテナなのでスキル側が必ずcommitとpushまでやる。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
   },
   {
     id: "llm-and-scripts",
