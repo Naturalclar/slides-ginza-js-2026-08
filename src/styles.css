@@ -124,6 +124,22 @@ code {
     monospace;
 }
 
+/* ─── Label + value rows (skills slide) ─── */
+.rows {
+  /* Same trap as .ascii: centred text would ragged-align the labels.
+     Centre the block, align the columns inside it. */
+  width: fit-content;
+  margin: 2rem auto 0;
+  text-align: left;
+}
+
+.rows li {
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  gap: 1.25rem;
+  align-items: baseline;
+}
+
 /* ─── Title slide ASCII art ─── */
 .ascii {
   /* .slide-inner centers text, which would center each line of the art

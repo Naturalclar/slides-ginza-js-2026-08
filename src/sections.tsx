@@ -100,6 +100,30 @@ export const sections: Section[] = [
     note: "デモ直後に1枚で全体像。ノートはただのMarkdown、スキルはただの手順書、保存はただのgit push。特別なアプリは1つもない",
   },
   {
+    id: "skills",
+    content: (
+      <>
+        <h1>1日を回しているスキル</h1>
+        <ul className="links rows">
+          <li>
+            <span>朝</span>
+            <span>prepare-day → new-note → daily-suggestion</span>
+          </li>
+          <li>
+            <span>日中</span>
+            <span>diary / show-today</span>
+          </li>
+          <li>
+            <span>夜</span>
+            <span>close-day</span>
+          </li>
+        </ul>
+        <p className="sub">ぜんぶで14個。どれもMarkdownの手順書</p>
+      </>
+    ),
+    note: "2:55–3:15 デモで見せた朝・昼・夜が、そのままスキル名になっている。prepare-dayがブランチを切ってノートを作りPRを開く、diaryが日記を書いて提案を更新してcommitとpushまでやる、close-dayがそのPRをsquash mergeして1日=1コミットにする。コードではなくMarkdownの手順書なので、足すのも直すのも文章を書くだけ。ここは名前を読み上げず「こういう粒度で切ってあります」で流す。20秒",
+  },
+  {
     id: "anywhere",
     content: (
       <>
@@ -107,7 +131,7 @@ export const sections: Section[] = [
         <p className="sub">iPad + Tailscale + Termius → tmux</p>
       </>
     ),
-    note: "2:55–3:20 経路は2つある。①スマホ: Claudeのモバイルアプリからスキルを叩く。セッションは使い捨てのコンテナなので、スキル側が必ずcommitとpushまでやる——状態をセッションに置かない設計。②腰を据えるとき: iPad miniからTailscale経由でMacにSSH、Termiusで繋いでtmuxにアタッチし、Claude Codeをそのまま動かす。tmux new -A -s main なので切れても同じセッションに戻れる。ルータもファイアウォールも触っていない。20〜25秒。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
+    note: "3:15–3:40 経路は2つある。①スマホ: Claudeのモバイルアプリからスキルを叩く。セッションは使い捨てのコンテナなので、スキル側が必ずcommitとpushまでやる——状態をセッションに置かない設計。②腰を据えるとき: iPad miniからTailscale経由でMacにSSH、Termiusで繋いでtmuxにアタッチし、Claude Codeをそのまま動かす。tmux new -A -s main なので切れても同じセッションに戻れる。ルータもファイアウォールも触っていない。20〜25秒。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
   },
   {
     id: "llm-and-scripts",
@@ -119,7 +143,7 @@ export const sections: Section[] = [
         </p>
       </>
     ),
-    note: "3:20–4:55 技術の芯その1、95秒。【削る順②は消化済み】圧縮版なので結論から言う: 判断はLLM、書き換えは決定的で冪等なスクリプト。LLMに直接ファイルを触らせない——この分担がシステムを壊さないコツ。具体はスライドに出ているMCPサーバの1点だけ。Ginza.jsなので「書き換え側はTypeScript」は拾ってもらえるはず。外部データとの同期の詳細には踏み込まない。さらに押されたら結論の1文だけ残す",
+    note: "3:40–4:55 技術の芯その1、75秒。【削る順②は消化済み】圧縮版なので結論から言う: 判断はLLM、書き換えは決定的で冪等なスクリプト。LLMに直接ファイルを触らせない——この分担がシステムを壊さないコツ。具体はスライドに出ているMCPサーバの1点だけ。Ginza.jsなので「書き換え側はTypeScript」は拾ってもらえるはず。外部データとの同期の詳細には踏み込まない。さらに押されたら結論の1文だけ残す",
   },
   {
     id: "failures",
