@@ -86,11 +86,11 @@ for a 10-minute slot (`0:30–2:00`), contingency instructions, and an explicit 
 (【削る順①】…) marking which slides get dropped if the talk runs long. Preserve that information
 when editing a note.
 
-The running order is planned, not just contingent: 「2週間で…」 is dropped **up front** to pay for
-the longer opening, and the closing loses its back half. What survives no matter what is the demo
-and the four-slide 失敗した話 block — those two are the spine. 「この運用から生まれたもの」 is not
-cut either, but is held to 30 seconds. The times in the notes are a closed schedule that ends at
-10:00, so moving one slide's allocation means finding the seconds somewhere else.
+The demo is the spine and keeps its 90 seconds no matter what. After it, the technical middle runs
+skills → どこからでも → 判断はLLM → the three-slide handoff story, and the closing loses its back
+half by plan. 「この運用から生まれたもの」 is not cut, but is held to 30 seconds. The times in the
+notes are a closed schedule that ends at 10:00, so moving one slide's allocation means finding the
+seconds somewhere else — that is why adding a slide has repeatedly meant compressing a neighbour.
 
 Content is Japanese. `index.html` sets `lang="ja"` and the font stack in `styles.css` includes
 CJK families — keep both in place. Notes use `–`/`—` escapes for en/em dashes; matching
