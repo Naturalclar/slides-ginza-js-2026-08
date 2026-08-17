@@ -18,8 +18,10 @@ export const sections: Section[] = [
     id: "title",
     content: (
       <>
-        <h1>1日を1つのリポジトリで回す</h1>
-        <p className="sub">Markdown + Git + Claude Code</p>
+        <h1>自分だけのGLaDOSをつくる</h1>
+        <p className="sub">
+          <code>{'import { Markdown, Git, ClaudeCode } from "./my-repo"'}</code>
+        </p>
         <p className="subtitle">Naturalclar / naturalclar.dev</p>
         <div className="scroll-hint" aria-hidden="true">
           <span className="arrow-down" />
@@ -63,7 +65,7 @@ export const sections: Section[] = [
     id: "ai-same",
     content: (
       <>
-        <h1>AIの使い方も、たぶん同じ</h1>
+        <h1>AIの使い方も、きっと同じ</h1>
         <p className="sub">何が自分に合うかは、見てみないと分からない</p>
       </>
     ),
@@ -87,9 +89,26 @@ export const sections: Section[] = [
     note: "デモ直後に1枚で全体像。ノートはただのMarkdown、スキルはただの手順書、保存はただのgit push。特別なアプリは1つもない",
   },
   {
+    id: "anywhere",
+    content: (
+      <>
+        <h1>どこからでも、1日を回す</h1>
+        <p className="sub">iPad + Tailscale + Termius → tmux</p>
+      </>
+    ),
+    note: "2:55–3:20 経路は2つある。①スマホ: Claudeのモバイルアプリからスキルを叩く。セッションは使い捨てのコンテナなので、スキル側が必ずcommitとpushまでやる——状態をセッションに置かない設計。②腰を据えるとき: iPad miniからTailscale経由でMacにSSH、Termiusで繋いでtmuxにアタッチし、Claude Codeをそのまま動かす。tmux new -A -s main なので切れても同じセッションに戻れる。ルータもファイアウォールも触っていない。20〜25秒。押されたら「状態はセッションではなくGitにある」の一言だけ残す",
+  },
+  {
     id: "llm-and-scripts",
-    content: <h1>判断はLLM、書き換えは冪等なスクリプト</h1>,
-    note: "2:55–4:55 技術の芯その1。外部データ（チケット管理ツール等）との同期は、LLMが「何をすべきか」を判断し、実際のファイル書き換えは決定的で冪等なスクリプトがやる。LLMに直接ファイルを触らせない——この分担がシステムを壊さないコツ。【削る順②】押されたら詳細を落として結論だけ残す",
+    content: (
+      <>
+        <h1>判断はLLM、書き換えは冪等なスクリプト</h1>
+        <p className="sub">
+          ノートを書き換えるのは <code>Deno + TypeScript</code> の MCP サーバ
+        </p>
+      </>
+    ),
+    note: "3:20–4:55 技術の芯その1、95秒。【削る順②は消化済み】圧縮版なので結論から言う: 判断はLLM、書き換えは決定的で冪等なスクリプト。LLMに直接ファイルを触らせない——この分担がシステムを壊さないコツ。具体はスライドに出ているMCPサーバの1点だけ。Ginza.jsなので「書き換え側はTypeScript」は拾ってもらえるはず。外部データとの同期の詳細には踏み込まない。さらに押されたら結論の1文だけ残す",
   },
   {
     id: "failures",
@@ -112,7 +131,7 @@ export const sections: Section[] = [
         </ul>
       </>
     ),
-    note: "7:25–7:55 一例紹介、30秒厳守。配信のセトリを自動で組むWebサービス。日記に書いた思いつきが当日デプロイまで行き、今も毎日使っている。日誌の記録がそのまま初期データになった。「運用のなかで思いつきが形になる」実例として30秒で流す。押されても削らない——30秒厳守で必ず触れる",
+    note: "7:25–7:55 一例紹介、30秒厳守。配信のセトリを自動で組むWebサービス。バニラのHTML + JSでフレームワークなし、GitHub Pages。日記に書いた思いつきが当日デプロイまで行き、今も毎日使っている。日誌の記録がそのまま初期データになった。「運用のなかで思いつきが形になる」実例として30秒で流す。押されても削らない——30秒厳守で必ず触れる",
   },
   {
     id: "operate",
