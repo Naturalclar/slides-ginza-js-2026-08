@@ -18,8 +18,10 @@ export const sections: Section[] = [
     id: "title",
     content: (
       <>
-        <h1>1日を1つのリポジトリで回す</h1>
-        <p className="sub">Markdown + Git + Claude Code</p>
+        <h1>自分だけのGLaDOSをつくる</h1>
+        <p className="sub">
+          <code>{'import { Markdown, Git, ClaudeCode } from "./my-repo"'}</code>
+        </p>
         <p className="subtitle">Naturalclar / naturalclar.dev</p>
         <div className="scroll-hint" aria-hidden="true">
           <span className="arrow-down" />
