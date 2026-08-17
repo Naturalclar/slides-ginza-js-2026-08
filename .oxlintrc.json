@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jsx-a11y", "import"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true
+  },
+  "rules": {
+    // Vite compiles JSX with the automatic runtime (tsconfig `jsx: react-jsx`),
+    // so `React` does not need to be in scope.
+    "react/react-in-jsx-scope": "off",
+
+    // main.tsx imports styles.css for its side effect — that is how Vite is
+    // told to bundle the stylesheet. There is nothing to assign.
+    "import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }],
+
+    // `sections` is a module-level constant that is never reordered, filtered,
+    // or appended to at runtime; the array index IS the slide's identity (the
+    // URL hash is that index). The rule guards against remounting on reorder,
+    // which cannot happen here, and the deck deliberately has no slide ids.
+    "react/no-array-index-key": "off"
+  },
+  "ignorePatterns": ["dist", "node_modules"]
+}

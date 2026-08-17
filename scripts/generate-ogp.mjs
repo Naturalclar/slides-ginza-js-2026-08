@@ -22,11 +22,10 @@ const url = server.resolvedUrls.local[0];
 
 // The sandboxed CI-style images ship a prebuilt Chromium that Playwright's
 // own resolver may not find; fall back to it explicitly.
-const browser = await chromium.launch({
-  ...(process.env.PLAYWRIGHT_CHROMIUM_PATH
-    ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH }
-    : {}),
-});
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_PATH;
+const browser = await chromium.launch(
+  executablePath ? { executablePath } : {}
+);
 
 try {
   const page = await browser.newPage({
