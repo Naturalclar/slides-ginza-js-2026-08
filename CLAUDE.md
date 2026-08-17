@@ -88,8 +88,14 @@ CJK families — keep both in place. Notes use `–`/`—` escapes for en/em das
 that is optional but consistent.
 
 Slides are deliberately near-empty — most are a single `<h1>`. Existing content classes
-(`.subtitle`, `.sub`, `.flow`, `.links`, `.link-heading`) cover the current needs; prefer reusing
-one over adding a new rule.
+(`.subtitle`, `.sub`, `.flow`, `.links`, `.link-heading`, and `.avatar` / `.intro-name` on the
+self-intro slide) cover the current needs; prefer reusing one over adding a new rule.
+
+The intro slide's portrait is the deck's only image. It lives in `src/assets/` and is **imported**
+by `sections.tsx` rather than served from `public/`: an import lets Vite fingerprint it and emit a
+relative URL, which is what keeps it resolving under the project path that `base: "./"` targets. A
+`public/` file referenced as `/naturalclar.jpg` would 404 on the deployed site. Hot-linking the
+avatar from github.com would break the deck's offline guarantee, so the file is committed.
 
 ## Deployment
 

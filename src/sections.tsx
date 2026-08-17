@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import avatar from "./assets/naturalclar.jpg";
+
 export interface Section {
   /**
    * Stable identity for React's key. Navigation does not use this — slide
@@ -25,6 +27,17 @@ export const sections: Section[] = [
       </>
     ),
     note: "タイトル。名乗って即次へ",
+  },
+  {
+    id: "intro",
+    content: (
+      <>
+        <img className="avatar" src={avatar} alt="" width={394} height={394} />
+        <h1 className="intro-name">Naturalclar</h1>
+        <p className="sub">naturalclar.dev / github.com/Naturalclar</p>
+      </>
+    ),
+    note: "自己紹介。15秒以内で流す（つかみの0:30枠から借りる）。名前とリンクだけ、経歴は語らない。押されたら名乗りだけにして次へ",
   },
   {
     id: "struggle",
