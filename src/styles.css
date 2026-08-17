@@ -124,6 +124,21 @@ code {
     monospace;
 }
 
+/* ─── Intro slide ─── */
+.avatar {
+  display: block;
+  width: clamp(120px, 16vw, 220px);
+  height: auto;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+}
+
+/* The name is a label under a portrait, not a statement like the other
+   slides, so it does not want the full h1 size. */
+.intro-name {
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+}
+
 /* ─── Scroll hint arrow (slide 1 only) ─── */
 .scroll-hint {
   position: absolute;
