@@ -96,7 +96,8 @@ when editing a note.
 
 The demo is the spine and keeps its 90 seconds no matter what. After it, the technical middle runs
 skills → どこからでも → 判断はLLM → the three-slide handoff story, and the closing loses its back
-half by plan. 「この運用から生まれたもの」 is not cut, but is held to 30 seconds. The times in the
+half by plan. medley generator has no slide — it gets one spoken line during the demo, and its link
+was deliberately removed from the closing slide. The times in the
 notes are a closed schedule that ends at 10:00, so moving one slide's allocation means finding the
 seconds somewhere else — that is why adding a slide has repeatedly meant compressing a neighbour.
 
