@@ -63,7 +63,7 @@ export const sections: Section[] = [
     id: "ai-same",
     content: (
       <>
-        <h1>AIの使い方も、たぶん同じ</h1>
+        <h1>AIの使い方も、きっと同じ</h1>
         <p className="sub">何が自分に合うかは、見てみないと分からない</p>
       </>
     ),
