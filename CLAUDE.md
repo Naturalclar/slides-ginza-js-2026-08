@@ -14,10 +14,16 @@ components so the audience does not arrive expecting a talking assistant. Keep t
 if you touch either.
 
 The wording on the slides comes from an external script and is authoritative — adjust presentation,
-not copy. The deck must also stay publishable. The speaker's own company and product (another ball
-/ avvy) are named deliberately on the intro slide — that is their call to make. What stays out is
-everything that is not theirs to publish: ticket IDs, listener names, and real task content. The
-Q&A note carries the same rule, because that is the stretch of the talk with no script.
+not copy. The deck must also stay publishable, and the line runs between what is the speaker's to
+publish and what is not.
+
+**Fine to name:** the speaker's own company and product — another ball, avvy — and the tools they
+use, such as Linear, Tailscale, and Termius. These are on the slides on purpose; do not strip them
+out as "internal".
+
+**Never:** ticket IDs, listener names, and the content of real tasks, notes, or diary entries. This
+holds even when a real example would be the better slide. The Q&A note repeats the rule, because
+that is the one stretch of the talk with no script to fall back on.
 
 ## Commands
 
