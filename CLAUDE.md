@@ -5,8 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-deck slide presentation for Ginza.js #11 — a 10-minute Japanese-language talk titled
-「思いついた日にリリースする個人開発」. It is not a slide *framework*; it is one specific talk built as a
-Vite + React 19 SPA. All slide content lives in the repo as JSX, not in Markdown or a CMS.
+「1日を1つのリポジトリで回す」, about running a day out of one Markdown + Git + Claude Code repo. It is
+not a slide *framework*; it is one specific talk built as a Vite + React 19 SPA. All slide content
+lives in the repo as JSX, not in Markdown or a CMS.
+
+The wording on the slides comes from an external script and is authoritative — adjust presentation,
+not copy. The deck must also stay publishable: no employer names, ticket IDs, listener names, or
+other private details belong in it.
 
 ## Commands
 
@@ -75,7 +80,8 @@ check it when adding fixed-position or animated elements.
 The `note` field is not decoration. It carries the presenter's live script: wall-clock timings
 for a 10-minute slot (`0:30–2:00`), contingency instructions, and an explicit cut order
 (【削る順①】…) marking which slides get dropped if the talk runs long. Preserve that information
-when editing a note; the demo slide and the 「3日後、迷わなくなった」 slide are marked as never-cut.
+when editing a note. The demo slide and the 「失敗した話を3つ」 slide are the talk's spine and are
+marked never-cut; 「この運用から生まれたもの」 is not cut either, but is held to 30 seconds.
 
 Content is Japanese. `index.html` sets `lang="ja"` and the font stack in `styles.css` includes
 CJK families — keep both in place. Notes use `–`/`—` escapes for en/em dashes; matching
