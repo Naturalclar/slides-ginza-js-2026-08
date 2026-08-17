@@ -17,11 +17,20 @@ pnpm install
 pnpm dev       # Vite dev server — the presentation mode you actually present from
 pnpm build     # tsc (typecheck, noEmit) && vite build → dist/
 pnpm preview   # serve the built dist/
+pnpm lint      # oxlint
+pnpm lint:fix  # oxlint --fix
+pnpm ogp       # regenerate public/ogp.png (see below)
 ```
 
-There is no test runner, linter, or formatter configured. `pnpm build` is the only check —
-typechecking runs through `tsc` with `strict`, `noUnusedLocals`, and `noUnusedParameters` on,
-so unused variables fail the build.
+There is no test runner or formatter configured; `pnpm lint` and `pnpm build` are the two
+checks, and `.github/workflows/ci.yml` runs both on pull requests and on `main`. There is no
+separate typecheck script because `build` already runs `tsc` — with `strict`, `noUnusedLocals`,
+and `noUnusedParameters` on, so unused variables fail the build.
+
+`.oxlintrc.json` disables three rules, each with the reasoning inline. The notable one is
+`react/no-array-index-key`: `sections` is a module-level constant that is never reordered at
+runtime, and the array index *is* a slide's identity (the URL hash is that index), so the
+remount-on-reorder hazard the rule guards against cannot occur here.
 
 ## Architecture
 
