@@ -122,6 +122,24 @@ code {
   line-height: 2;
   font-family: "SF Mono", SFMono-Regular, Consolas, "Liberation Mono", Menlo,
     monospace;
+  /* A bare URL has no spaces to wrap at, so on a narrow screen it would push
+     past the viewport. Break mid-token as a last resort; text with spaces
+     still wraps normally first. Inherited, so .rows values get it too — their
+     label column is nowrap and stays intact. */
+  overflow-wrap: anywhere;
+}
+
+/* The deck's only links. Browser blue would be unreadable on the dark theme,
+   so they take the surrounding colour and mark themselves with the underline. */
+.links a {
+  color: inherit;
+  text-decoration-color: var(--fg-sub);
+  text-underline-offset: 0.25em;
+}
+
+.links a:hover,
+.links a:focus-visible {
+  color: var(--fg);
 }
 
 /* ─── Label + value rows (skills slide) ─── */
@@ -151,12 +169,6 @@ code {
   white-space: nowrap;
 }
 
-/* A bare URL has no spaces to wrap at, so on a narrow screen it would push the
-   grid past the viewport. Let the value column break mid-token as a last
-   resort; text with spaces still wraps normally first. */
-.rows li > span:last-child {
-  overflow-wrap: anywhere;
-}
 
 /* ─── Title slide ASCII art ─── */
 .ascii {

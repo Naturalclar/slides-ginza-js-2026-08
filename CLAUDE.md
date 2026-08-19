@@ -96,10 +96,17 @@ when editing a note.
 
 The demo is the spine and keeps its 90 seconds no matter what. After it, the technical middle runs
 skills → どこからでも → 判断はLLM → the three-slide handoff story, and the closing loses its back
-half by plan. medley generator has no slide — it gets one spoken line during the demo, and its link
-was deliberately removed from the closing slide. The times in the
-notes are a closed schedule that ends at 10:00, so moving one slide's allocation means finding the
-seconds somewhere else — that is why adding a slide has repeatedly meant compressing a neighbour.
+half by plan. medley generator has no slide — it gets one spoken line during the demo. The times in
+the notes are a closed schedule that ends at 10:00, so moving one slide's allocation means finding
+the seconds somewhere else — that is why adding a slide has repeatedly meant compressing a
+neighbour.
+
+The talk ends on two slides that share the 9:00–10:00 Q&A block and so carry no times of their own:
+ありがとうございました, held up while questions are taken, then リンク. That last slide is down to a
+single entry, the SendMessage documentation, because it backs the one claim in the talk that invites
+a "wait, really?" — a cross-session message carries text and nothing else. The blog, naturalclar.dev,
+and medley generator links were each dropped on purpose; a link page with one link on it is the
+point, so weigh anything you add against that.
 
 Content is Japanese. `index.html` sets `lang="ja"` and the font stack in `styles.css` includes
 CJK families — keep both in place. Notes use `–`/`—` escapes for en/em dashes; matching
