@@ -223,21 +223,27 @@ export const sections: Section[] = [
   },
   {
     id: "thanks",
+    content: <h1>ありがとうございました</h1>,
+    note: "9:00–10:00。この1枚を出しっぱなしにして、質問は口頭で募る（「何かありますか？」）。ブログに詳細記事を書く予定と一言。想定質問: ノートが壊れたら？（全部Gitなので戻せる）／スキルってどう書く？（Markdownの手順書、コードじゃない）／会社のタスク管理とどう繋いでる？（読み取り同期のみ・書き込みは慎重に）／料金は？（実際の使用感で答える）。会社とプロダクトの名前は自分のものなので出してよい。出さないのはチケットID・リスナー名・実際のタスク内容",
+  },
+  {
+    id: "links",
     content: (
       <>
-        <h1>ありがとうございました</h1>
-        <ul className="links rows">
+        <h1 className="link-heading">リンク</h1>
+        <ul className="links">
           <li>
-            <span>ブログ</span>
-            <span>blog.naturalclar.dev</span>
-          </li>
-          <li>
-            <span>SendMessage</span>
-            <span>code.claude.com/docs/en/cross-session-messaging</span>
+            <a
+              href="https://code.claude.com/docs/en/cross-session-messaging"
+              target="_blank"
+              rel="noreferrer"
+            >
+              code.claude.com/docs/en/cross-session-messaging
+            </a>
           </li>
         </ul>
       </>
     ),
-    note: "9:00–10:00。この1枚を出しっぱなしにして、質問は口頭で募る（「何かありますか？」）。リンクが映ったままなので、質疑の間ずっと参照できる。ブログに詳細記事を書く予定と一言。SendMessageのリンクは公式ドキュメント——「渡るのはテキストだけ」の根拠がここに書いてあるので、聞かれたらここを見てもらう。想定質問: ノートが壊れたら？（全部Gitなので戻せる）／スキルってどう書く？（Markdownの手順書、コードじゃない）／会社のタスク管理とどう繋いでる？（読み取り同期のみ・書き込みは慎重に）／料金は？（実際の使用感で答える）。会社とプロダクトの名前は自分のものなので出してよい。出さないのはチケットID・リスナー名・実際のタスク内容",
+    note: "最後の1枚。質疑枠の中なので固有の持ち時間はない。ありがとうございましたで質問を募り、ひと通り答えたらここへ送って出しっぱなしにする。載せているのはSendMessageの公式ドキュメント——「渡るのはテキストだけ」の根拠がここに書いてあるので、聞かれたらこのページを指す。スライドは公開するので、あとから見た人はそのまま開ける",
   },
 ];
